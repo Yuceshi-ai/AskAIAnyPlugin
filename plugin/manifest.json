@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "AI随手问",
+  "version": "1.0",
+  "description": "随时向AI提问，随时思考，随时总结",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "offscreen",
+    "notifications"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'; connect-src 'self' data: http://localhost:7878 https://deepread.aiagentool.com;"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "lib/*",
+        "langs/*",
+        "popup/popup.html",
+        "popup/popup.css"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+} 

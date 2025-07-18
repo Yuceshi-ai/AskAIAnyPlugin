@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-YueDu</title>
+</head>
+<body>
+  <div id="app-container">
+    <div class="header">
+      <div class="title-section">
+        <img id="logo" src="../icons/icon48.png" alt="Logo" class="logo">
+        <h4 id="title">AI随手问</h4>
+        <button id="show-floater-btn" title="打开悬浮窗">❏</button>
+      </div>
+      <div class="auth-section">
+        <div id="user-info">
+          <span id="username-display"></span>
+          <span id="user-credits-display" class="credits"></span>
+          <span id="user-credits-get" class="credits-get">获取</span>
+          <button id="toggle-opacity-slider-btn" title="调整透明度">🎨</button>
+        </div>
+        <div id="guest-view">
+          <button id="show-register-btn" class="btn-link">注册</button>
+          <button id="show-login-btn" class="btn-link">登录</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="opacity-slider-container" class="settings-panel" style="display: none;">
+      <label for="opacity-slider">透明度</label>
+      <input type="range" id="opacity-slider" min="0.2" max="1" step="0.1" value="1">
+      <span id="opacity-value">100%</span>
+    </div>
+
+    <div id="login-form-container" style="display: none;">
+        <label id="form-title" class="input-label">登录</label>
+        <div class="form-group">
+            <input type="text" id="username" class="input-field" placeholder="手机号">
+        </div>
+        <div class="form-group">
+            <input type="password" id="password" class="input-field" placeholder="密码">
+        </div>
+        <button id="login-btn" class="btn primary full-width">确认</button>
+        <p id="login-error"></p>
+    </div>
+
+    <!-- Main functionality -->
+    <div id="main-content">
+        <div class="input-area">
+            <div class="input-header">
+                <label class="input-label">研究主题</label>
+                <div class="input-mode-switcher">
+                    <button id="mode-text" class="mode-btn">手写输入</button>
+                    <button id="mode-link" class="mode-btn">解析链接</button>
+                    <button id="mode-image" class="mode-btn active">OCR输入</button>
+                </div>
+            </div>
+            <div id="input-container">
+                <textarea id="text-input" placeholder="在此处输入主题文本..." style="display: none;"></textarea>
+                <textarea id="link-input" placeholder="请输入要解析的链接..." style="display: none;height: 20px;"></textarea>
+                <div id="image-capture-area">
+                    <p>点击截图提取文字</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="input-area">
+          <div class="input-header">
+            <label class="input-label">处理模式</label>
+            <button id="custom-framework-btn" class="btn-link btn-link-small">自定义</button>
+            <div class="input-mode-switcher">
+                <button id="mode-ask" class="mode-btn">询问内容</button>
+                <button id="mode-summarize" class="mode-btn active">结构化总结</button>
+            </div>
+          </div>
+          <div id="processing-mode-details">
+              <div id="framework-container">
+                <select id="framework-select" class="custom-select"></select>
+              </div>
+              <div id="question-container" style="display: none;">
+                <textarea id="question-input" style="font-size: 13px;" placeholder="针对以上主题，在此输入您的问题..."></textarea>
+              </div>
+          </div>
+        </div>
+
+        <button id="process-btn" class="btn primary full-width">开始处理</button>
+        <div id="result-section" class="result-section hidden">
+            <p class="placeholder">处理结果将显示在这里...</p>
+        </div>
+    </div>
+
+    <div id="modal-view" class="modal">
+        <div class="modal-content">
+            <span id="modal-close-btn" class="close-btn">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html> 

@@ -1,0 +1,556 @@
+/* A complete stylesheet for popup.html to ensure consistent styling. */
+
+/* --- Global & Variables --- */
+:root {
+    --primary-color: #3b82f6;
+    --primary-hover-color: #2563eb;
+    --processing-color: #28a745; /* Green */
+    --error-color: #ef4444;
+    --border-color: #d1d5db;
+    --text-color: #1f2937;
+    --text-secondary-color: #6b7280;
+    --bg-color: #f9fafb;
+    --bg-secondary-color: #ffffff;
+}
+
+/* --- Utility Classes --- */
+.hidden {
+    display: none !important;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    width: 280px; /* Reduced width */
+    padding: 8px 16px; /* Further reduced vertical padding */
+    box-sizing: border-box;
+}
+
+#app-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Further reduced gap between elements */
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 15px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+.btn.primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+.btn.primary:hover:not(:disabled) {
+    background-color: var(--primary-hover-color);
+}
+.btn.secondary {
+    background-color: #f3f4f6;
+    color: #374151;
+    border-color: var(--border-color);
+}
+.btn.secondary:hover {
+    background-color: #e5e7eb;
+}
+.btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+.btn.full-width {
+    width: 100%;
+}
+.btn.processing {
+    background-color: var(--processing-color);
+    color: white;
+}
+.btn-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--primary-color);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+#config-btn {
+    font-size: 12px;
+    color: #60a5fa; /* A lighter blue */
+}
+#guest-view {
+    display: flex;
+    gap: 8px;
+}
+
+
+/* --- Header & Auth --- */
+.header {
+    display: flex;
+    margin-top: 5px;
+    height: 25px;
+    justify-content: space-between;
+    align-items: center;
+}
+.title-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.title-section .logo {
+    width: 24px;
+    height: 24px;
+}
+.title-section h1 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+.title-section h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+}
+#show-floater-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: var(--text-secondary-color);
+    cursor: pointer;
+    padding: 0 4px;
+    margin-left: 8px;
+    line-height: 1;
+    transition: color 0.2s;
+}
+#show-floater-btn:hover {
+    color: var(--primary-color);
+}
+#toggle-opacity-slider-btn {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: var(--text-secondary-color);
+    cursor: pointer;
+    padding: 0 4px;
+    margin-left: 4px;
+    line-height: 1;
+    transition: color 0.2s;
+}
+#toggle-opacity-slider-btn:hover {
+    color: var(--primary-color);
+}
+.auth-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+#user-info {
+    display: none;
+    align-items: center;
+    gap: 8px;
+}
+#username-display {
+    font-weight: 600;
+}
+.credits {
+    font-size: 11px;
+    font-weight: 700;
+    color: #84cc16; /* A lime green color */
+    background-color: #ecfccb;
+    padding: 2px 6px;
+    border-radius: 9999px; /* Pill shape */
+    border: 1px solid #d9f99d;
+}
+.credits-get {
+  font-size: 12px;
+  font-weight: 700;
+  color: #60a5fa; /* A lime green color */
+  padding: 2px 6px;
+}
+#logout-btn {
+    font-size: 13px;
+    color: var(--text-secondary-color);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+#show-login-btn {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--primary-color);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* --- Settings Panel (Opacity) --- */
+.settings-panel {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    background-color: #f3f4f6;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+.settings-panel label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary-color);
+}
+#opacity-slider {
+    flex-grow: 1;
+}
+#opacity-value {
+    font-size: 12px;
+    font-weight: 500;
+    min-width: 40px;
+    text-align: right;
+    color: var(--text-secondary-color);
+}
+
+/* --- Login Form --- */
+#login-form-container {
+    background: var(--bg-secondary-color);
+    padding: 16px 16px 0; /* Remove bottom padding to align button with main view */
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+/* #login-form-container > *:not(:last-child) {
+    margin-bottom: 12px;
+} */
+#form-title {
+    text-align: left; /* Align to the left */
+    margin: 0 0 12px 0; /* Reduced space below the title */
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary-color);
+}
+.form-group {
+    margin: 0 0 8px 0; /* Reduced space below input groups */
+}
+/* This specifically targets the password field to reduce space between inputs */
+.form-group input#username {
+    margin-bottom: 0;
+}
+.form-group + .form-group {
+    margin-top: -2px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 8px 14px; /* Reduced vertical padding */
+    border: 1px solid var(--border-color);
+    border-radius: 8px; /* Slightly rounded corners */
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.input-field:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+#login-btn {
+    margin-top: 8px; /* Reduced top margin to bring it closer to password */
+}
+
+#login-error {
+    color: var(--error-color);
+    font-size: 13px;
+    text-align: center;
+    /* This element will have no height or margin by default when empty */
+    margin-top: 0;
+    transition: margin-top 0.2s ease-in-out;
+}
+
+#login-error:not(:empty) {
+    /* When an error message is added, give it space */
+    margin-top: 8px; /* Reduced space to bring button closer to bottom */
+    min-height: 18px; /* And ensure it has enough height */
+    margin-bottom: 8px; /* Add space below the error message itself */
+}
+
+/* --- Main Content --- */
+#main-content {
+    /* Remove visual container styles */
+    background: none;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Standardized gap */
+}
+#process-btn {
+    margin-bottom: 4px; /* Add a little space below the button */
+}
+#text-input {
+    font-size: 13px;
+    height: 80px; /* Reduced height */
+    resize: vertical;
+}
+#link-input {
+    font-size: 13px;
+    height: 37px !important;
+    min-height: 37px !important;
+    max-height: 37px !important;
+    resize: none; /* 禁止用户调整大小 */
+}
+textarea, #framework-select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px; /* Original style */
+    font-size: 13px;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+/* --- New styles for input modes --- */
+.input-label {
+    display: block;
+    margin-bottom: 0px; /* Reduced margin */
+    font-size: 12px; /* Made font smaller */
+    font-weight: 500;
+    color: var(--text-secondary-color);
+}
+.input-area {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.input-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.input-mode-switcher {
+    display: flex;
+    background-color: #e9ecef;
+    padding: 2px;
+    border-radius: 6px;
+}
+.mode-btn {
+    border: none;
+    padding: 4px 7px;
+    font-size: 11px; /* Made font smaller */
+    background-color: transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--text-secondary-color);
+}
+.mode-btn.active {
+    background-color: var(--bg-secondary-color);
+    color: var(--text-color);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+.input-area textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+#image-capture-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    border: 2px dashed #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #f8f9fa;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+#image-capture-area:hover {
+    background-color: #f1f3f5;
+    border-color: #ced4da;
+}
+#image-capture-area p {
+    margin: 0;
+    font-weight: 500;
+    color: var(--text-secondary-color);
+}
+
+
+/* --- Result Section --- */
+/* 确保结果区域在没有hidden类时能够正常显示 */
+.result-section {
+    display: block;
+    margin-top: -2px;
+    margin-bottom: 8px;
+    padding: 4px 12px;
+    background-color: var(--bg-secondary-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.result-section.hidden {
+    display: none !important;
+}
+.result-section .placeholder, .result-section .error-message {
+    text-align: center;
+    padding: 16px 8px;
+    color: var(--text-secondary-color);
+    font-size: 14px;
+}
+.result-section .error-message {
+    color: var(--error-color);
+}
+.result-container {
+    display: flex;
+    gap: 10px;
+}
+.result-column {
+    flex: 1;
+    min-width: 0;
+}
+.result-column h4 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: var(--text-secondary-color);
+    font-weight: 600;
+    margin: -4px 0 6px 0; /* 负的上外边距将标题向上拉 */
+}
+.credits-consumed {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-secondary-color);
+    margin-left: auto; /* Push it to the right, before the button */
+    margin-right: 8px;
+}
+.result-column-content {
+    font-size: 12px;
+    background-color: transparent; /* 去掉灰色背景 */
+    color: var(--text-secondary-color);
+    color: var(--text-color); /* 保持文字颜色一致 */
+    max-height: 170px;
+    overflow-y: auto;
+    word-wrap: break-word;
+    white-space: pre-wrap; /* Preserve line breaks */
+    border: none; /* 去掉边框 */
+    box-shadow: none; /* 去掉阴影 */
+}
+.enlarge-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    flex-shrink: 0;
+    color: var(--text-secondary-color);
+}
+.enlarge-btn:hover {
+    color: var(--primary-color);
+}
+
+/* --- Modal --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+}
+.modal-content {
+    background-color: #fff;
+    padding: 20px 25px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 700px;
+    max-height: 90vh;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.close-btn {
+    position: absolute;
+    top: 10px; right: 15px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+#modal-body {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-y: auto;
+    padding-top: 10px;
+}
+#modal-body h3 {
+    margin-top: 0;
+} 
+
+/* Styles for image rendering in modal */
+.image-placeholder {
+    margin: 1rem 0;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9fafb;
+    border-radius: 0.5rem;
+}
+
+.rendered-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border-left-color: var(--primary-color);
+    animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+} 
+
+.btn-link-small {
+    font-size: 12px;
+    color: #60a5fa; /* A nice blue color */
+} 
+
+.result-section.fixed-height-result {
+    height: 180px;
+    max-height: 180px; /* Reinforce the height */
+    overflow-y: auto;   /* Allow vertical scrolling */
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--bg-secondary-color);
+    margin-top: 8px; /* Add some space above */
+} 

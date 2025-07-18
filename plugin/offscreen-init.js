@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",()=>{console.log("Offscreen document initialized"),chrome.runtime.sendMessage({type:"OFFSCREEN_READY"})});

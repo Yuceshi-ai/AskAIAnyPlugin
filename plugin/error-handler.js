@@ -1,0 +1,1 @@
+window.onerror=function(o,e,r,n,l){return console.error("Global error:",{message:o,source:e,lineno:r,colno:n,error:l}),!1},window.onunhandledrejection=function(o){console.error("Unhandled promise rejection:",o.reason),o.preventDefault()};
